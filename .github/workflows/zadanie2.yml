@@ -41,8 +41,8 @@ jobs:
           push: false
           tags: temp-image:scan
           load: true
-          cache-from: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/cache:${{ github.sha }}
-          cache-to: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/cache:${{ github.sha }},mode=max
+          cache-from: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/zad2_cache:${{ github.sha }}
+          cache-to: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/zad2_cache:${{ github.sha }},mode=max
 
       - name: Skanowanie obrazu za pomocą Trivy
         uses: aquasecurity/trivy-action@0.13.0
@@ -61,7 +61,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/kacperklusek1/weather_app_chmurki:latest
-            ghcr.io/kacperklusek1/weather_app_chmurki:${{ github.sha }}
-          cache-from: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/cache:${{ github.sha }}
-          cache-to: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/cache:${{ github.sha }},mode=max
+            ghcr.io/kacperklusek1/weather_app_ghactions:latest
+            ghcr.io/kacperklusek1/weather_app_ghactions:${{ github.sha }}
+          cache-from: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/zad2_cache:${{ github.sha }}
+          cache-to: type=registry,ref=docker.io/${{ secrets.DOCKERHUB_USERNAME }}/zad2_cache:${{ github.sha }},mode=max
